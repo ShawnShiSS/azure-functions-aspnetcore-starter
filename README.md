@@ -12,7 +12,7 @@ The primary goal of the project is to provide a basic solution structure for any
 # Features supported
 * ASP.NET Core 3
 * Dependency Injection for Inversion of Control
-* Logging
+* Structured Logging using Serilog
 * Strongly-typed Configuration
 * EF Core
 * AutoMapper
