@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System.IO;
 
 [assembly: FunctionsStartup(typeof(AzureFunctions.Starter.Startup))]
@@ -26,8 +27,18 @@ namespace AzureFunctions.Starter
             // Use a singleton Configuration throughout the application
             services.AddSingleton<IConfiguration>(configuration);
 
-            // Logging using default ILogger
-            services.AddLogging();
+            // if default ILogger is desired instead of Serilog
+            //services.AddLogging();
+
+            // configure serilog
+            var logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File("C:\\Logs\\AzureFunctions.Starter\\log-StaterFunction.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+            services.AddLogging(lb => lb.AddSerilog(logger));
+
+            
         }
     }
 }
