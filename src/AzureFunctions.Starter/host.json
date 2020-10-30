@@ -6,10 +6,10 @@
       "samplingExcludedTypes": "Request",
       "samplingSettings": {
         "isEnabled": true
-      },
-      "logLevel": {
-        "AzureFunctions.Starter": "Information"
       }
+    },
+    "logLevel": {
+      "AzureFunctions.Starter.StarterFunction": "Information"
     }
   }
 }
