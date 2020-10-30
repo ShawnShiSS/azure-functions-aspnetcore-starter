@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 
+[assembly: FunctionsStartup(typeof(AzureFunctions.Starter.Startup))]
+
 namespace AzureFunctions.Starter
 {
     public class Startup : FunctionsStartup
