@@ -17,5 +17,5 @@ The primary goal of the project is to provide a basic solution structure for any
 * Dependency Injection for Inversion of Control
 * Structured Logging using Serilog
 * Strongly-typed Configuration
-* EF Core
-* AutoMapper
+* EF Core (TODO)
+* AutoMapper (TODO)
