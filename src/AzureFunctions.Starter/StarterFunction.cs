@@ -1,17 +1,20 @@
-using System;
+using AzureFunctions.Core.Interfaces.Email;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace AzureFunctions.Starter
 {
     public class StarterFunction
     {
         private readonly ILogger<StarterFunction> _log;
+        private readonly IEmailService _emailService;
 
-        public StarterFunction(ILogger<StarterFunction> log)
+        public StarterFunction(ILogger<StarterFunction> log,
+                               IEmailService emailService)
         {
             this._log = log ?? throw new ArgumentNullException(nameof(log));
+            this._emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
 
         }
 

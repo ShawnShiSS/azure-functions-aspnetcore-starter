@@ -1,4 +1,7 @@
-﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using AzureFunctions.Core.Interfaces.Email;
+using AzureFunctions.Infrastructure.Configuration;
+using AzureFunctions.Infrastructure.Services.Email;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
@@ -17,7 +20,6 @@ namespace AzureFunctions.Starter
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             //Configurations
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -26,6 +28,8 @@ namespace AzureFunctions.Starter
                 .Build();
             // Use a singleton Configuration throughout the application
             services.AddSingleton<IConfiguration>(configuration);
+            // Singleton instance. See example usage in SendGridEmailService: inject IOptions<SendGridEmailSettings> in SendGridEmailService constructor
+            services.Configure<SendGridEmailSettings>(configuration.GetSection("SendGridEmailSettings"));
 
             // if default ILogger is desired instead of Serilog
             //services.AddLogging();
@@ -38,7 +42,9 @@ namespace AzureFunctions.Starter
                 .CreateLogger();
             services.AddLogging(lb => lb.AddSerilog(logger));
 
-            
+            //Register SendGrid Email
+            services.AddScoped<IEmailService, SendGridEmailService>();
+
         }
     }
 }
