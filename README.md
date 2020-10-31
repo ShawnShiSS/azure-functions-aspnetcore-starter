@@ -1,5 +1,5 @@
 # Azure Function Starter Project using ASP.NET Core 3
-This repo provides a solution starting point to build an Azure Function 3.x using ASP.NET Core 3. 
+This repo provides a solution starting point to build an Azure Function 3.x using ASP.NET Core 3 and Clean Architecture.
 
 # Goals
 The primary goal of the project is to provide a basic solution structure for anyone who is building a new Azure Function for production use and want to skip some grunt work to build commonly used features.
