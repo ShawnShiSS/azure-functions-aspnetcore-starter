@@ -1,4 +1,4 @@
-# Azure Functions Starter Project using ASP.NET Core 3
+# Azure Functions Starter Project using ASP.NET Core and Clean Architecture
 This repo provides a solution starting point to build Azure Functions 3.x using ASP.NET Core 3 and Clean Architecture.
 
 # Goals
